@@ -1,11 +1,12 @@
 # Instala flask, joblib y scikit-learn si no los tienes: pip install Flask joblib scikit-learn
+import os           # <- necesario para Render
 import cv2
 import numpy as np
 import pickle
 import tensorflow as tf
 from flask import Flask, request, jsonify
 from flask_cors import CORS 
-import joblib 
+import joblib
 
 app = Flask(__name__)
 CORS(app) 
