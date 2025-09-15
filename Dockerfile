@@ -1,25 +1,20 @@
-# Dockerfile para Render - Backend de lenguaje de señas
-# Usamos Python 3.11 slim
+# Usamos Python 3.11 slim para mantener el contenedor ligero
 FROM python:3.11-slim
 
-# Evitamos que Python genere archivos pycache
-ENV PYTHONDONTWRITEBYTECODE=1
-ENV PYTHONUNBUFFERED=1
+# Instalar librerías del sistema necesarias para OpenCV
+RUN apt-get update && apt-get install -y \
+    libgl1-mesa-glx \
+    libglib2.0-0 \
+    && rm -rf /var/lib/apt/lists/*
 
-# Directorio de trabajo en el contenedor
+# Crear directorio de la app dentro del contenedor
 WORKDIR /app
 
-# Copiamos requirements.txt
-COPY requirements.txt .
+# Copiar archivos del proyecto al contenedor
+COPY . /app
 
-# Actualizamos pip e instalamos dependencias
-RUN python -m pip install --upgrade pip && pip install -r requirements.txt
+# Instalar dependencias de Python
+RUN pip install --no-cache-dir -r requirements.txt
 
-# Copiamos todo el código al contenedor
-COPY . .
-
-# Puerto en el que tu app Flask escuchará
-EXPOSE 8000
-
-# Comando para ejecutar tu app - reemplaza app.py si tu archivo principal tiene otro nombre
-CMD ["python", "app.py"]
+# Comando para iniciar tu app
+CMD ["python", "Proyecto_TF/backend/app_server.py"]
