@@ -8,7 +8,7 @@ RUN apt-get update && apt-get install -y \
     && rm -rf /var/lib/apt/lists/*
 
 # Crear directorio de la app dentro del contenedor
-WORKDIR /app
+WORKDIR /app/Proyecto_TF/backend
 
 # Copiar archivos del proyecto al contenedor
 COPY . /app
@@ -17,4 +17,4 @@ COPY . /app
 RUN pip install --no-cache-dir -r requirements.txt
 
 # Comando para iniciar tu app
-CMD ["python", "Proyecto_TF/backend/app_server.py"]
+CMD ["python", "app_server.py"]
