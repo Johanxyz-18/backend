@@ -21,4 +21,4 @@ COPY . /app
 RUN pip install --no-cache-dir -r requirements.txt
 
 # Comando para iniciar la app
-CMD ["python", "Proyecto_TF/backend/app_server.py"]
+CMD ["python", "app_server.py"]
