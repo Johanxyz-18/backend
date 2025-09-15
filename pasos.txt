@@ -1,0 +1,9 @@
+Activa tu entorno virtual de TensorFlow:
+cd C:\Users\Leandro\Desktop\Proyecto_TF     <-- Dice Leandro porque es mi laptop
+.\tf_env\Scripts\activate
+
+Asegúrate de que tienes instalados los paquetes:
+pip install tensorflow scikit-learn pandas numpy joblib mediapipe opencv-python
+
+Prueba el reconocimiento en tiempo real:
+python recognize_keras.py
